@@ -9,3 +9,5 @@ format.
 
 =====================
 cd to Book-data-converter/bin folder and try command "java com/java/fileconverter/Convert input.txt xml", it will detect input file from "inputfiles" folder. input.txt and input.xml files are exixt in "inputfiles" folder.
+
+And will generate output in "outputfiles" folder as output.txt and output.xml file.
