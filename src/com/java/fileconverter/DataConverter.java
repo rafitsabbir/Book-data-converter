@@ -81,7 +81,7 @@ public class DataConverter {
 
 			Node nNode = nList.item(temp);
 
-			System.out.println("\nCurrent Element :" + nNode.getNodeName());
+			/*System.out.println("\nCurrent Element :" + nNode.getNodeName());*/
 
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
@@ -105,7 +105,7 @@ public class DataConverter {
 
 				System.out.println("authors : " + authorName);
 
-				System.out.println("published-date : "
+				System.out.println("\npublished-date : "
 						+ eElement.getElementsByTagName("published-date")
 								.item(0).getTextContent() + "\n----");
 
@@ -114,7 +114,7 @@ public class DataConverter {
 								.getTextContent()
 						+ "\nauthors : "
 						+ authorName
-						+ "\npublished-date : "
+						+ "\n\npublished-date : "
 						+ eElement.getElementsByTagName("published-date")
 								.item(0).getTextContent();
 			}
