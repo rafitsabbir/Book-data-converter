@@ -18,6 +18,7 @@ And it will generate output in "outputfiles" folder as output.txt and output.xml
 
 ==============================
 Second phase
+==============================
 
 ISBN number has been added and checked if all data contain it or not. If not then an error message will be showing and exit from conversion.
 
