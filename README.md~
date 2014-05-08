@@ -18,7 +18,6 @@ And it will generate output in "outputfiles" folder as output.txt and output.xml
 
 ==============================
 Second phase
-==============================
 
 ISBN number has been added and checked if all data contain it or not. If not then an error message will be showing and exit from conversion.
 
@@ -26,14 +25,3 @@ When we convert xml to text format, book name will be showing in capital letter 
 
 cd to Book-data-converter/bin folder and try command "java com/java/fileconverter/Convert input.xml text"
 
-
-==============================
-Third phase
-==============================
-
-Add support for json to xml and vice versa conversion. 
-
-cd to Book-data-converter/bin folder and try command "java com/java/fileconverter/Convert input.json xml" and vice versa. 
-input.xml and input.json files are exixt in "inputfiles" folder.
-
-And it will generate output in "outputfiles" folder as output.json and output.xml file.

@@ -37,22 +37,24 @@ public class ReadingInput {
 
 		try {
 			String extention = Files.probeContentType(file.toPath());
-			
-			if (extention.contains("xml")){
+
+			if (filePath.substring(filePath.length() - 4, filePath.length())
+					.equalsIgnoreCase("json")) {
+				format = "json";
+			} else if (extention.contains("xml")) {
 				format = "xml";
-			}else if(extention.contains("text")){
+			} else if (extention.contains("text")) {
 				format = "text";
 			}
 			System.out.println("Guessing text format ...");
-			System.out.println("Book data is in "+ format + " format");
-			System.out.println("Converting to "+ targrtFormat + " format");
-			
-			
+			System.out.println("Book data is in " + format + " format");
+			System.out.println("Converting to " + targrtFormat + " format");
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return format;
 	}
 }

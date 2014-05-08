@@ -25,6 +25,8 @@ import org.xml.sax.SAXException;
 
 public class DataConverter {
 	String filePath = "";
+	XmlToJsonConverter xmlToJsonConverter = new XmlToJsonConverter();
+	JsonToXmlConverter jsonToXmlConverter = new JsonToXmlConverter();
 
 	public DataConverter(String fileName) {
 		// TODO Auto-generated constructor stub
@@ -37,21 +39,32 @@ public class DataConverter {
 
 		if (extention.equalsIgnoreCase("text")
 				&& targrtFormat.equalsIgnoreCase("xml")) {
+			/*
+			 * try { try { convertTextToXml(); } catch (TransformerException e)
+			 * { // TODO Auto-generated catch block e.printStackTrace(); } }
+			 * catch (SAXException | IOException e) { // TODO Auto-generated
+			 * catch block e.printStackTrace(); }
+			 */
+			System.out
+					.println("Please, try xml os json format. Text format is not supported as input/output.");
+		} else if (extention.equalsIgnoreCase("xml")
+				&& targrtFormat.equalsIgnoreCase("text")) {
+			// convertXmlToText();
+			System.out
+					.println("Please, try xml os json format. Text format is not supported as input/output.");
+		} else if (extention.equalsIgnoreCase("xml")
+				&& targrtFormat.equalsIgnoreCase("json")) {
+			xmlToJsonConverter.convert(filePath);
+		}else if (extention.equalsIgnoreCase("json")
+				&& targrtFormat.equalsIgnoreCase("xml")) {
 			try {
-				try {
-					convertTextToXml();
-				} catch (TransformerException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} catch (SAXException | IOException e) {
+				jsonToXmlConverter.convert(filePath);
+			} catch (SAXException | IOException | TransformerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		} else if (extention.equalsIgnoreCase("xml")
-				&& targrtFormat.equalsIgnoreCase("text")) {
-			convertXmlToText();
 		}
+
 	}
 
 	private void convertXmlToText() throws ParserConfigurationException {
@@ -91,7 +104,8 @@ public class DataConverter {
 							.getTextContent() != null) {
 					}
 				} catch (NullPointerException n) {
-					System.out.print("ISBN number is missing in next book. Conversion exiting...");
+					System.out
+							.print("ISBN number is missing in next book. Conversion exiting...");
 					exitConversion = true;
 					break;
 				}
@@ -208,7 +222,6 @@ public class DataConverter {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
 
 		System.out.println("Here is the output... \n ++++");
 		System.out.println(xmlString + "\n ----");

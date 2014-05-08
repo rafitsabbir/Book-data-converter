@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><booklist xmlns:b="http://example.com/programming/test/book">
 <book><name> Effective Java 
-</name><authors><author> Joshua Bloch
+</name><author> Joshua Bloch
 </author><author> James gosling 
-</author></authors><published-date> October 2005
-</published-date></book>
-<book><name> Effective Java 2
-</name><authors><author> Joshua Bloch 2
-</author><author> James gosling  2
-</author></authors><published-date> October 2005 2
-</published-date></book>
+</author><publishedDate> October 2005
+</publishedDate><isbn>u9348984995898493
+</isbn>
+</book>
+<book><name> Effective Java  2
+</name><author> Joshua Bloch 2
+</author><author> James gosling 2
+</author><publishedDate> October 2005 2
+</publishedDate><isbn>u9348984995898493
+</isbn>
+</book>
+<book><name> Effective Java 3
+</name><author> Joshua Bloch 3
+</author><author> James gosling 3
+</author><publishedDate> October 2005 3
+</publishedDate><isbn>u9348984995898493
+</isbn>
+</book>
 </booklist>
