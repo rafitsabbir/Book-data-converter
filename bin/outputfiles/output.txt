@@ -1,5 +1,27 @@
 name :  Effective Java 
 	
 authors :  Joshua Bloch,  James gosling 
+
 published-date :  October 2005
 	
+isbn : u9348984995898493
+
+
+name :  Effective Java  2
+	
+authors :  Joshua Bloch 2,  James gosling 2
+
+published-date :  October 2005 2
+	
+isbn : u9348984995898493
+
+
+name :  Effective Java 3
+	
+authors :  Joshua Bloch 3,  James gosling 3
+
+published-date :  October 2005 3
+	
+isbn : u9348984995898493
+
+

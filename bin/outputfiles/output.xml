@@ -1,5 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><book xmlns:b="http://example.com/programming/test/book"><name> Effective Java 
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><booklist xmlns:b="http://example.com/programming/test/book">
+<book><name> Effective Java 
 </name><authors><author> Joshua Bloch
 </author><author> James gosling 
 </author></authors><published-date> October 2005
 </published-date></book>
+<book><name> Effective Java 2
+</name><authors><author> Joshua Bloch 2
+</author><author> James gosling  2
+</author></authors><published-date> October 2005 2
+</published-date></book>
+</booklist>

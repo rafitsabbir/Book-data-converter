@@ -60,6 +60,7 @@ public class DataConverter {
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = null;
 		String txtString = "";
+		boolean exitConversion = false;
 
 		try {
 			doc = dBuilder.parse(fXmlFile);
@@ -81,17 +82,25 @@ public class DataConverter {
 
 			Node nNode = nList.item(temp);
 
-			/*System.out.println("\nCurrent Element :" + nNode.getNodeName());*/
-
 			if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
 				Element eElement = (Element) nNode;
+
+				try {
+					if (eElement.getElementsByTagName("isbn").item(0)
+							.getTextContent() != null) {
+					}
+				} catch (NullPointerException n) {
+					System.out.print("ISBN number is missing in next book. Conversion exiting...");
+					exitConversion = true;
+					break;
+				}
 
 				String authorName = "";
 
 				System.out.println("name : "
 						+ eElement.getElementsByTagName("name").item(0)
-								.getTextContent());
+								.getTextContent().toUpperCase());
 
 				for (int i = 0; i < eElement.getElementsByTagName("author")
 						.getLength(); i++) {
@@ -107,7 +116,11 @@ public class DataConverter {
 
 				System.out.println("\npublished-date : "
 						+ eElement.getElementsByTagName("published-date")
-								.item(0).getTextContent() + "\n----");
+								.item(0).getTextContent());
+
+				System.out.println("\nisbn : "
+						+ eElement.getElementsByTagName("isbn").item(0)
+								.getTextContent() + "\n----\n");
 
 				txtString += "name : "
 						+ eElement.getElementsByTagName("name").item(0)
@@ -116,7 +129,11 @@ public class DataConverter {
 						+ authorName
 						+ "\n\npublished-date : "
 						+ eElement.getElementsByTagName("published-date")
-								.item(0).getTextContent();
+								.item(0).getTextContent()
+						+ "\nisbn : "
+						+ eElement.getElementsByTagName("isbn").item(0)
+								.getTextContent() + "\n\n\n";
+
 			}
 		}
 
@@ -130,7 +147,8 @@ public class DataConverter {
 			e.printStackTrace();
 		}
 		try {
-			fileWriter.write(txtString);
+			if (!exitConversion)
+				fileWriter.write(txtString);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -147,7 +165,9 @@ public class DataConverter {
 			ParserConfigurationException, IOException, TransformerException {
 		// TODO Auto-generated method stub
 		String xmlString = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>"
-				+ "<book xmlns:b=\"http://example.com/programming/test/book\">";
+				+ "<booklist xmlns:b=\"http://example.com/programming/test/book\">";
+		xmlString += "\n<book>";
+		int lineCounter = 0;
 
 		try (BufferedReader reader = new BufferedReader(
 				new FileReader(filePath))) {
@@ -155,10 +175,16 @@ public class DataConverter {
 
 			while ((currentLine = reader.readLine()) != null) {
 				if (currentLine.length() > 0) {
+					lineCounter++;
 					// split using ":"
 					String[] parts = currentLine.split(":");
 					String part1 = parts[0]; // tag name
 					String part2 = parts[1]; // value
+
+					if (lineCounter == 4) {
+						xmlString += "</book>\n<book>";
+						lineCounter = 0;
+					}
 
 					if (part1.trim().equalsIgnoreCase("authors")) {
 						xmlString += "<" + part1.trim() + ">";
@@ -177,11 +203,12 @@ public class DataConverter {
 					}
 				}
 			}
-			xmlString += "</book>";
+			xmlString += "</book>\n</booklist>";
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 
 		System.out.println("Here is the output... \n ++++");
 		System.out.println(xmlString + "\n ----");

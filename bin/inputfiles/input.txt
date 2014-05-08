@@ -4,3 +4,9 @@ authors: Joshua Bloch, James gosling 
 
 published-date: October 2005
 
+name: Effective Java 2
+
+authors: Joshua Bloch 2, James gosling  2
+
+published-date: October 2005 2
+
